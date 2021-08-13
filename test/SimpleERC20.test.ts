@@ -23,14 +23,14 @@ const setup = deployments.createFixture(async () => {
 });
 
 describe('SimpleERC20', function () {
-  it('transfer fails', async function () {
+  it('transfer failed', async function () {
     const {users} = await setup();
     await expect(
       users[0].SimpleERC20.transfer(users[1].address, 1)
     ).to.be.revertedWith('NOT_ENOUGH_TOKENS');
   });
 
-  it('transfer succeed', async function () {
+  it('transfer succeeded', async function () {
     const {users, simpleERC20Beneficiary, SimpleERC20} = await setup();
     await simpleERC20Beneficiary.SimpleERC20.transfer(users[1].address, 1);
 

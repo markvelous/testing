@@ -10,7 +10,7 @@ import {setupUser, setupUsers} from './utils';
 
 describe('PaymentSplitter', () => {
   // this should show 1 pending; using it as a check
-  xit('markvelously', async () => {});
+  xit('should show 1 pending', async () => {});
 
   it('should deploy the smart contract', async () => {
     // retrieve some accounts that can be used for testing
@@ -20,7 +20,7 @@ describe('PaymentSplitter', () => {
       'PaymentSplitter'
     );
 
-    // deploy the payment splitter with only 1 user with 1 share
+    // deploy the PaymentSplitter with 1 user & 1 share
     const paymentSplitterInstance = await PaymentSplitterFactory.connect(
       deployer
     ).deploy([account1.address], [1]);
@@ -28,7 +28,7 @@ describe('PaymentSplitter', () => {
     // wait for deployment to complete
     await paymentSplitterInstance.deployed();
 
-    // just check that it has an address
+    // check that it has an address
     expect(paymentSplitterInstance.address).to.not.be.null;
   });
 
@@ -53,7 +53,7 @@ describe('PaymentSplitter', () => {
       'PaymentSplitter'
     );
 
-    // deploy the payment splitter with empty arrays
+    // deploy the PaymentSplitter with empty arrays
     await expect(
       PaymentSplitterFactory.connect(deployer).deploy([], [])
     ).to.be.revertedWith('PaymentSplitter: no payees');
@@ -74,7 +74,7 @@ describe('PaymentSplitter', () => {
     ).to.be.revertedWith('PaymentSplitter: payees and shares length mismatch');
   });
 
-  it('should fail to deploy if there is a payee with zero address', async () => {
+  it('should fail to deploy if the payee has a zero address', async () => {
     const [deployer, account1] = await ethers.getSigners();
     const PaymentSplitterFactory = await ethers.getContractFactory(
       'PaymentSplitter'
