@@ -38,11 +38,11 @@ describe('PaymentSplitter', () => {
       'PaymentSplitter'
     );
 
-    // deploy the PaymentSplitter with 1 user but 2 items in the shares array
+    // deploy the PaymentSplitter with 1 user but 3  items in the shares array
     await expect(
       PaymentSplitterFactory.connect(deployer).deploy(
         [account1.address],
-        [1, 2]
+        [1, 3, 1]
       )
     ).to.be.revertedWith('PaymentSplitter: payees and shares length mismatch');
   });
