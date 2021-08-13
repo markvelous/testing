@@ -38,7 +38,7 @@ describe('PaymentSplitter', () => {
       'PaymentSplitter'
     );
 
-    // deploy the payment splitter with 1 user but two items in the shares array
+    // deploy the PaymentSplitter with 1 user but 2 items in the shares array
     await expect(
       PaymentSplitterFactory.connect(deployer).deploy(
         [account1.address],
@@ -107,7 +107,7 @@ describe('PaymentSplitter', () => {
     const PaymentSplitterFactory = await ethers.getContractFactory(
       'PaymentSplitter'
     );
-    // deploy the payment splitter with two account1
+    // deploy the PaymentSplitter with two of the same account
     await expect(
       PaymentSplitterFactory.connect(deployer).deploy(
         [account1.address, account1.address],
