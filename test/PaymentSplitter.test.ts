@@ -9,6 +9,9 @@ import {PaymentSplitter__factory} from '../typechain';
 import {setupUser, setupUsers} from './utils';
 
 describe('PaymentSplitter', () => {
+  // this should show 1 pending; using it as a check
+  xit('markvelously', async () => {});
+
   it('should deploy the smart contract', async () => {
     // retrieve some accounts that can be used for testing
     const [deployer, account1] = await ethers.getSigners();
